@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title%}Seven{% endblock %}
+
+{% block content %}
+<h1>Seven</h1>
+<p>Put a list of integers separated by commas</p>
+<form method="POST">
+  {{ form.as_p }}
+  <button type="submit">Send</button>
+  {% csrf_token %}
+</form>
+{% if result %}
+<p>Pairs of numbers that add up to 7</p>
+<ul>
+  {% for pair in result %}
+  <li>{{ pair }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock content %}
